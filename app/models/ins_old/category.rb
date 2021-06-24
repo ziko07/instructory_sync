@@ -19,8 +19,6 @@ class InsOld::Category < InsOld::Base
       deleted_at: ''
     }
     p new_category
-    new_course = InsNew::CourseCategory.create(new_category)
-    InsOld::Category.count
-    InsNew::CourseCategory.count
+  InsNew::CourseCategory.create(new_category)
   end
 end
