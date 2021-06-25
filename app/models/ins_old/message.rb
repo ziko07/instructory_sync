@@ -1,5 +1,6 @@
 class InsOld::Message < InsOld::Base
   def self.create_new_message
+    InsNew::Conversation.delete_all
     InsOld::Message.all.each do |message|
       message.sync_item
     end

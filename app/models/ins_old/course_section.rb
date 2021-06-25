@@ -1,6 +1,7 @@
 class InsOld::CourseSection < InsOld::Base
   self.table_name = "course_section"
   def self.create_new_course_section
+    InsNew::CourseSection.delete_all
     InsOld::CourseSection.all.each do |section|
       section.sync_item
     end

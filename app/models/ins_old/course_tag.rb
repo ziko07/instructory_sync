@@ -1,5 +1,6 @@
 class InsOld::CourseTag < InsOld::Base
   def self.create_new_course_tag
+    InsNew::CourseTag.delete_all
     InsOld::CourseTag.all.each do |tag|
       tag.sync_item
     end

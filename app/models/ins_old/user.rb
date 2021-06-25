@@ -1,5 +1,6 @@
 class InsOld::User < InsOld::Base
   def self.create_new_user
+      InsNew::User.delete_all
       InsOld::User.all.each do |user|
         new_user = InsNew::User.find_by_email(user.email)
         unless new_user.present?
@@ -42,9 +43,9 @@ class InsOld::User < InsOld::Base
       remember_token: '',
       created_at: self.create_date,
       updated_at: self.update_date
+      #TODO Add Confirmed_at by pias
     }
-    new_user = InsNew::User.create(new_user)
-    p InsNew::User.count
+    InsNew::User.create(new_user)
   end
 
 end

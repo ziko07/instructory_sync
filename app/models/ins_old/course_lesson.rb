@@ -1,5 +1,6 @@
 class InsOld::CourseLesson < InsOld::Base
   def self.create_new_course_lesson
+    InsNew::CourseLesson.delete_all
     InsOld::CourseLesson.all.each do |lesson|
       lesson.sync_item
     end

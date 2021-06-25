@@ -1,5 +1,6 @@
 class InsOld::CourseRating < InsOld::Base
   def self.create_new_course_rating
+    InsNew::CourseRating.delete_all
     InsOld::CourseRating.all.each do |rating|
       rating.sync_item
     end

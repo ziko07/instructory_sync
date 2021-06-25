@@ -1,6 +1,7 @@
 class InsOld::SubCategory < InsOld::Base
   self.table_name = "sub_category"
   def self.create_new_course_sub_category
+    InsNew::CourseSubcategory.delete_all
     InsOld::SubCategory.all.each do |sub_category|
       sub_category.sync_item
     end
@@ -18,9 +19,6 @@ class InsOld::SubCategory < InsOld::Base
       created_at: DateTime.now,
       updated_at: DateTime.now
     }
-    p new_category
-    new_course = InsNew::CourseSubcategory.create(new_category)
-    InsOld::SubCategory.count
-    InsNew::CourseSubcategory.count
+   InsNew::CourseSubcategory.create(new_category)
   end
 end

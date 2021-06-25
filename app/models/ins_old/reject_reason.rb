@@ -1,6 +1,7 @@
 class InsOld::RejectReason < InsOld::Base
   self.table_name = "reject_reason"
   def self.create_new_reject_reason
+    InsNew::CourseRejectReason.delete_all
     InsOld::RejectReason.all.each do |reason|
       reason.sync_item
     end

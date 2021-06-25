@@ -1,5 +1,6 @@
 class InsOld::Course < InsOld::Base
   def self.create_new_course
+    InsNew::Course.delete_all
     InsOld::Course.all.each do |course|
       course.sync_item
     end
@@ -31,8 +32,7 @@ class InsOld::Course < InsOld::Base
       deleted_at: '',
 
     }
-    new_course = InsNew::Course.create(new_course)
-    InsOld::Course.count
-    InsNew::Course.count
+   InsNew::Course.create(new_course)
+
   end
 end
