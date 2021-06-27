@@ -19,7 +19,7 @@ class InsOld::CourseLesson < InsOld::Base
       duration: self.duration ,
       serial: self.orderby ,
       approval: self.approval.present? ? self.approval : 1 ,
-      status: self.status ,
+      status: true,
       created_at: DateTime.now,
       updated_at: DateTime.now,
       deleted_at: ''
