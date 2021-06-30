@@ -24,8 +24,8 @@ class InsOld::CourseSalesDetail < InsOld::Base
       ssl_fee: ssl_fee,
       instructory_income: courserate - instructor_income,
       status: status,
-      created_at: DateTime.now,
-      updated_at: DateTime.now
+      created_at: buydate,
+      updated_at: buydate
     }
     InsNew::CourseSaleDetail.create(new_course_sale_detail)
   end

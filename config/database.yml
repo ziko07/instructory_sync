@@ -33,7 +33,7 @@ ins_new_app:
 
 ins_old_app:
   adapter: mysql2
-  database: instructory_old
+  database: instructory_main_db
   host: 127.0.0.1
   username: root
   password: password

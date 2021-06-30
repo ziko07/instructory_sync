@@ -1,4 +1,7 @@
 class InsOld::Course < InsOld::Base
+  attribute :privacy, ActiveRecord::Type::Integer.new
+  attribute :coursefor, ActiveRecord::Type::Integer.new
+
   def self.create_new_course
     InsNew::Course.delete_all
     InsOld::Course.all.each do |course|
@@ -19,7 +22,6 @@ class InsOld::Course < InsOld::Base
       approval: self.approval,
       currency_id: self.curncyid,
       language_locale_id: self.language,
-      difficulty_level: 0,
       duration: self.duration,
       course_url: self.courseurl,
       features: self.whatlearn,
@@ -27,12 +29,12 @@ class InsOld::Course < InsOld::Base
       view_count: self.view_count,
       share_count: 0,
       avg_rating: 0,
+      difficulty_level: self.coursefor,
       created_at: self.submitdate,
       updated_at: self.updated_at,
       deleted_at: '',
 
     }
-   InsNew::Course.create(new_course)
-
+    crs = InsNew::Course.create(new_course)
   end
 end

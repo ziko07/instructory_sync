@@ -1,4 +1,5 @@
 class InsOld::CourseLesson < InsOld::Base
+  attribute :privacy, ActiveRecord::Type::Integer.new
   def self.create_new_course_lesson
     InsNew::CourseLesson.delete_all
     InsOld::CourseLesson.all.each do |lesson|
@@ -12,13 +13,13 @@ class InsOld::CourseLesson < InsOld::Base
       title: self.title,
       course_id: self.courses_id,
       description: self.description,
-      video_url: self.vimeo_url,
+      video_url: (self.vimeo_url.split('/').last if self.video_url.present?),
       thumbnail: self.thumbnail ,
-      privacy: self.privacy ,
       course_section_id: self.section_id ,
       duration: self.duration ,
-      serial: self.orderby ,
-      approval: self.approval.present? ? self.approval : 1 ,
+      serial: self.orderby || 0 ,
+      privacy: old_course.privacy == 1 ? 0 : 1,
+      approval:  self.status,
       status: true,
       created_at: DateTime.now,
       updated_at: DateTime.now,

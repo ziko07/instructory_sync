@@ -1,8 +1,9 @@
 class InsOld::User < InsOld::Base
+  attribute :user_type, ActiveRecord::Type::Integer.new
   def self.create_new_user
       InsNew::User.delete_all
       InsOld::User.all.each do |user|
-        new_user = InsNew::User.find_by_email(user.email)
+        new_user = InsNew::User.where('email =  ? OR user_name = ?', user.email, user.username)
         unless new_user.present?
           user.sync_item
         end
@@ -42,8 +43,8 @@ class InsOld::User < InsOld::Base
       status: self.status,
       remember_token: '',
       created_at: self.create_date,
-      updated_at: self.update_date
-      #TODO Add Confirmed_at by pias
+      updated_at: self.update_date,
+      email_verified_at: self.create_date
     }
     InsNew::User.create(new_user)
   end
