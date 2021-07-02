@@ -16,7 +16,7 @@ class InsOld::CourseSale < InsOld::Base
       user_id: users_id,
       store_id:  payment_ssl_post.present? ? payment_ssl_post.storeid : '',
       transaction_id:  transno,
-      payment_method:  paymethod,
+      payment_method:  2,
       currency_id:  paycurrency,
       subtotal_amount:  subtotalamount,
       discount_amount:  discountamount,
