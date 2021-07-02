@@ -27,7 +27,7 @@ class InsOld::CourseSale < InsOld::Base
       customer_phone:  payment_ssl_post.present? ?  payment_ssl_post.custphone || '' : '',
       cart_info:  payment_ssl_post.present? ? payment_ssl_post.cartinfo : '',
       ipn_response:  payment_ssl_post.present? ? payment_ssl_post.ipn_response : '',
-      payment_status:  status,
+      payment_status:  status ? 'Complete' : 'Failed',
       created_at:  trans_date,
       updated_at:  trans_date,
     }
