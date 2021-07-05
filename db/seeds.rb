@@ -22,7 +22,7 @@
 #   p purchased
 #   p enrolled
 #   user.update(total_purchased: purchased, total_enrollments: enrolled)
-# c = InsNew::Course.where(user_id: user.id).count
+# c = InsNew::Course.where(user_id: user.id, approval: 1).count
 # p c
 # if c > 0
 #   user.update!(user_type: 2)

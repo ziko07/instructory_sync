@@ -1,6 +1,4 @@
-class InsOld::Course < InsOld::Base
-  attribute :privacy, ActiveRecord::Type::Integer.new
-  attribute :coursefor, ActiveRecord::Type::Integer.new
+class InsOld::Certification < InsOld::Base
 
   def self.create_new_course
     InsNew::Course.delete_all
