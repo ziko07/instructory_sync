@@ -1,4 +1,4 @@
-class InsOld::Certification < InsOld::Base
+class InsOld::Course < InsOld::Base
 
   def self.create_new_course
     InsNew::Course.delete_all

@@ -8,17 +8,19 @@ class InsOld::CourseLesson < InsOld::Base
   end
 
   def sync_item
+    old_course =  InsOld::Course.find_by_id  self.courses_id
+    privecy_value = old_course.present? ? old_course.privacy : 1
     new_lesson = {
       id: self.id,
       title: self.title,
       course_id: self.courses_id,
       description: self.description,
-      video_url: (self.vimeo_url.split('/').last if self.video_url.present?),
+      video_url: (self.vimeo_url.split('/').last if self.vimeo_url.present?),
       thumbnail: self.thumbnail ,
       course_section_id: self.section_id ,
       duration: self.duration ,
       serial: self.orderby || 0 ,
-      privacy: old_course.privacy == 1 ? 0 : 1,
+      privacy: privecy_value == 1 ? 0 : 1,
       approval:  self.status,
       status: true,
       created_at: DateTime.now,

@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# InsNew::Course.all.each do |cr|
-#   avg_rating = (cr.course_ratings.sum(:star) / cr.course_ratings.count) if cr.course_ratings.count > 0
-#   cr.avg_rating = avg_rating.round(2) if avg_rating.present?
-#   cr.save
-# end
+InsNew::Course.all.each do |cr|
+  avg_rating = (cr.course_ratings.sum(:star) / cr.course_ratings.count) if cr.course_ratings.count > 0
+  cr.avg_rating = avg_rating.round(2) if avg_rating.present?
+  cr.save
+end
 
 # InsNew::User.update_all(user_type: 0)
 # InsNew::User.all.each do |user|
